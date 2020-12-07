@@ -1,0 +1,100 @@
+@font-face {
+    font-family: "PPETRIAL";
+    src: url("font/PPETRIAL.otf");
+    src: url("font/PPETRIAL.ttf");
+}
+
+body {
+    background: url("images/background.png");
+    position: relative;
+}
+
+#background {
+    background: url("images/menupage.png") no-repeat;
+    height: 700px;
+    width: 800px;
+    top : 500px; 
+    margin : 0 auto;
+}
+
+#choice{
+    font-family: "PPETRIAL";
+    color:white;
+    font-size: 60px;
+    cursor:pointer;
+    margin: auto;
+    text-align: center;
+    top : 300px;
+    position: relative;
+}
+
+
+#desc{
+    font-family: "PPETRIAL";
+    color: white;
+    text-align: center;
+    display:none;
+    top : 150px;
+    position: relative;
+}
+
+
+#formGame {
+    font-family: "PPETRIAL";
+    color:white;
+    font-size: 30px;
+    margin: auto;
+    text-align: center;
+    top : 250px;
+    left : 30%; 
+    position: relative;
+    display: none;
+}
+
+
+select, input {
+    font-family: "PPETRIAL";
+    color:black;
+    font-size: 20px;
+}
+
+
+#game{
+    color:white;
+    display: none;
+    margin : auto;
+    position : relative;
+    top : 180px;
+    left:30%; 
+}
+
+
+#tictactoe, #tictactoe th, #tictactoe td{
+    border: 1px solid white;
+    border-collapse: collapse;
+}
+
+#tictactoe {
+    border-top: none;
+}
+
+td{
+    width: 80px;
+    height: 80px;
+    background: none;
+    text-align: center;
+}
+
+#WhoIsP1, #WhoIsP2 {
+    font-family: "PPETRIAL";
+}
+
+#printWinner {
+    text-align: center;
+    font-family: "PPETRIAL";
+    font-size : 30px;
+}
+
+#buttonBackMenu {
+    text-align: center;
+}

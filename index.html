@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8" />
+
+    <head>
+        <title>TicTacToe 4x4</title>
+        <link rel="icon" href="images/favicon.ico" />
+        <link rel="stylesheet" href="style.css">
+
+    </head>
+
+    <body>
+        <div id="background">
+            <div id="choice">
+                <div id="play">Play</div>
+                <div id="help">Help</div>
+            </div>
+
+
+            <div id="formGame">
+                <form>
+                    <label for="formPlayer1">Choose Player 1 :</label>
+                    <select name="formPlayer1" id ="formPlayer1" >
+                        <option value="Human">Human</option>
+                        <option value="MiniMaxAlgorithm">MiniMax Algorithm</option>
+                        <option value="Random">Random</option>
+                        <option value="AlphaBetaAlgorithm">Alpha-Beta Pruning</option>
+                        <option value="MostWinsHeuristic">Most Wins Heuristic</option>
+                    </select>
+
+                </br>
+                    <label for="formPlayer2">Choose Player 2 :</label>
+                    <select name="formPlayer2" id ="formPlayer2" >
+                        <option value="Human">Human</option>
+                        <option value="MiniMaxAlgorithm">MiniMax Algorithm</option>
+                        <option value="Random">Random</option>
+                        <option value="AlphaBetaAlgorithm">Alpha-Beta Pruning</option>
+                        <option value="MostWinsHeuristic">Most Wins Heuristic</option>
+                    </select>  
+                    </br>
+
+                    <div></br></br>Who's first ?</div>
+                    <input type="radio" id="startPlayer1" name="start" value="startPlayer1" checked>Player 1
+                    <input type="radio" id="startPlayer2" name="start" value="startPlayer2">Player 2
+                    </br></br>
+                    <input type="button" id="buttonPlay" value="Play !" onclick="launchGame()">
+                    <span id="buttonBackMenu">
+                        <a href="index.html"> <input type="button" value="Back to the menu"></a>
+                    </span>
+                </form>
+            </div>
+
+
+            <div id="desc">
+                <h2>Explanations of the different game modes :</h2>
+                <h3>Human</h3>
+                <p>This mode let you play freely.</p>
+                
+                <h3>Random</h3>
+                <p>In this mode, the player is the computer. It plays randomly.</p>
+
+                <h3>MiniMax Algorithm</h3>
+                <p>In this mode, the player is an Artificial Intelligence. It works by making the tree of all possibilities.</p>
+
+                <h3>Alpha-Beta Pruning</h3>
+                <p>In this mode, the player is an Artificial Intelligence. It works by making the tree of all possibilities but it removes useless branches.  </p>
+
+                <h3>Most Wins Heuristic</h3>
+                <p>In this mode, the player is an Artificial Intelligence. The AI compares the number of its chances of winning to that of its opponent.</p>
+           
+                <div id="buttonBackMenu">
+                    <a href="index.html"> <input type="button" value="Back to the menu"></a>
+                </div>
+            </div>
+
+
+            <div id="game">
+                <table id="tictactoe">
+                    <tr>
+                        <td id="00"></td>
+                        <td id="01"></td>
+                        <td id="02"></td>
+                        <td id="03"></td>
+                    </tr>
+    
+                    <tr>
+                        <td id="10"></td>
+                        <td id="11"></td>
+                        <td id="12"></td>
+                        <td id="13"></td>
+                    </tr>
+    
+                    <tr>
+                        <td id="20"></td>
+                        <td id="21"></td>
+                        <td id="22"></td>
+                        <td id="23"></td>
+                    </tr>
+    
+                    <tr>
+                        <td id="30"></td>
+                        <td id="31"></td>
+                        <td id="32"></td>
+                        <td id="33"></td>
+                    </tr>
+                </table>
+                <span id="WhoIsP1"></span>
+                <span id="WhoIsP2"></span>
+
+                </br></br>
+                <div id="printWinner"></div>
+
+                <div id="buttonBackMenu">
+                    </br>
+                    <a href="index.html"> <input type="button" value="Back to the menu"> </a>
+                </div>
+                
+                
+            </div>
+        </div>
+ 
+
+        <script>
+            let choice= document.querySelector("#choice"); 
+            let play = document.querySelector("#play");
+            let help = document.querySelector("#help");
+            let desc = document.querySelector("#desc"); 
+            let formGame = document.querySelector("#formGame");
+            let buttonPlay = document.querySelector("#buttonPlay");
+            let game = document.querySelector("#game");
+            let tableTicTacToe = document.querySelector("#tictactoe");
+            let printWinner = document.querySelector("#printWinner");
+            //on récupère les identifiants dans des variables javascript
+
+
+            choice.onmouseover = function (event) { 
+                event.target.style.color = "rgb(251, 255, 0)";
+            }
+            //les options de jeu changent de couleurs quand la souris passe sur le texte
+
+            choice.onmouseout = function(event){
+                event.target.style.color = "white";
+            }
+            //les options de jeu reprennent leur couleur initiale quand la souris n'est pas dessus 
+
+            play.onclick = function(event){
+                choice.style.display = "none";
+                formGame.style.display = "inline-block";
+            }
+            //fonction qui affiche le formulaire de choix des joueurs quand on clique sur Play dans le menu
+
+            help.onclick = function(event){
+                choice.style.display = "none";
+                desc.style.display = "inline-block";
+            }
+            //fonction qui affiche des informations sur les différents modes de jeu quand on clique sur Help dans le menu
+
+            launchGame = function(){
+                let choiceP1 = document.getElementById("formPlayer1").value;
+                let choiceP2 = document.getElementById("formPlayer2").value;
+                let choiceFirstPlayer = (document.getElementById("startPlayer1").checked == true) ? "Player1" : "Player2" ;
+                formGame.style.display = "none";
+                game.style.display = "inline-block";
+
+                startGame(choiceP1, choiceP2, choiceFirstPlayer);
+            }
+            //fonction qui valide les choix du formulaire et qui affiche la grille de jeu et le résultat de la partie
+            
+
+        </script>
+
+        <script type="text/javascript" src="tictactoe.js"></script>
+        <script type="text/javascript" src="startGame.js"></script>
+
+
+
+    </body>
+
+</html>
