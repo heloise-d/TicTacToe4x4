@@ -459,7 +459,7 @@ class AI_alphabeta {
                     if (score < bestScore) bestScore = score; // Si le score calculé est supérieur au score stocké, on conserve le score
 
                     // Recalcul de beta si besoin : il prend la valeur min entre le bestScore et lui-même
-                    beta = (bestScore < alpha) ? bestScore : alpha;
+                    beta = (bestScore < beta) ? bestScore : beta;
                     if (alpha > beta) { // Si jamais la valeur d'alpha est > à beta : il faut couper la branche 
                         break; 
                     }
