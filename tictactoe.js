@@ -430,8 +430,8 @@ class AI_alphabeta {
                     if (score > bestScore) bestScore = score; // Si le score calculé est supérieur au score stocké, on conserve le score
 
                     // Recalcul de alpha si besoin : il prend la valeur max entre le bestScore et lui-même
-                    alpha = (bestScore > alpha) ? bestScore : alpha; 
-                    if (alpha > beta) break; // Si jamais la valeur d'alpha est > à beta : il faut couper la branche
+                    alpha = (bestScore >= alpha) ? bestScore : alpha; 
+                    if (alpha >= beta) break; // Si jamais la valeur d'alpha est > à beta : il faut couper la branche
                 }
             }
         }
@@ -459,8 +459,8 @@ class AI_alphabeta {
                     if (score < bestScore) bestScore = score; // Si le score calculé est supérieur au score stocké, on conserve le score
 
                     // Recalcul de beta si besoin : il prend la valeur min entre le bestScore et lui-même
-                    beta = (bestScore < beta) ? bestScore : beta;
-                    if (alpha > beta) { // Si jamais la valeur d'alpha est > à beta : il faut couper la branche 
+                    beta = (bestScore <= beta) ? bestScore : beta;
+                    if (alpha >= beta) { // Si jamais la valeur d'alpha est > à beta : il faut couper la branche 
                         break; 
                     }
                 }
