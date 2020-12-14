@@ -371,7 +371,7 @@ class AI_alphabeta {
         this.maxNbcallMinimax++;
         this.profondeurTemp++;
 
-        if (this.maxNbcallMinimax > 10000000) return 0; // C'est l'exception : le programme crashe sinon
+        if (this.maxNbcallMinimax > 15000000) return 0; // C'est l'exception : le programme crashe sinon
         let gagne = tictactoe.whoWins(); // On recherche si dans la possibilité actuelle testée par l'IA, il y a un gagnant
 
         // On vérifie s'il y a un gagnant dans la possibilité créée par l'IA
